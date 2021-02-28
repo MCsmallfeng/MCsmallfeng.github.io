@@ -1,0 +1,11 @@
+--- layout: page title: 首页 ---
+{% for post in site.posts -%} {%- capture post_year %}{{ post.date | date: "%Y" }}{% endcapture -%} {%- capture post_previous_year %}{{ post.previous.date | date: "%Y" }}{% endcapture -%} {%- capture post_next_year %}{{ post.next.date | date: "%Y" }}{% endcapture -%} {%- if forloop.first or post_next_year != post_year -%}
+{{post_year}}
+
+    {%- endif %}
+    {{ post.date | date: "%Y/%m/%d" }}
+    {{ post.title }}
+    {% for categorie in post.categories -%} {{ categorie }} {%- endfor %}
+    {%- if forloop.last or post_previous_year != post_year %} 
+
+{%- endif %} {%- endfor %} 
